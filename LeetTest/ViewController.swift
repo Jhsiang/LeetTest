@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
+
+    @IBOutlet var testV: UIView!
+    @IBOutlet var testTF: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         print("\(strReverse(str: "nosaj"))")
         print("\(strAnagram(str1: "jason", str2: "sonaj"))")
         print("add Digits =\(addDigits(inputNum: 345))")
@@ -23,6 +27,7 @@ class ViewController: UIViewController {
         print("power of Three = \(powerOfThree(num: 243))")
         print("major num = \(majorityNum(inputArr: [1,2,2,2,2,2,3,4,5,6,7,8,2,2,2,2,2,2,2,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]))")
         print("major str = \(majorityStr(inputArr: ["c","E","E","E","E","ff","xx","E","E","E","E","E","E","E","E","E","E","E","E","E","E"]))")
+
         var myArr = Array<Int>()
         for x in 1...100{
             myArr.append(101-x)
@@ -31,11 +36,77 @@ class ViewController: UIViewController {
 
         let addButton = UIButton()
         addButton.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-
         addButton.setImage(Graphics.getAddImageNormal(), for: UIControlState.normal)
         addButton.setImage(Graphics.getAddImageSelect(), for: UIControlState.highlighted)
-        self.view.addSubview(addButton)
+        //self.view.addSubview(addButton)
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
+
+        print("factor = \(factor(num1: 736, num2: 414))")
+        print("factor2 = \(factor(num1: 684, num2: 48))")
+        let x:Double = 91
+        print(" is prime = \(isPrime(n: x))")
+
+        // dic map filter
+        let myDic:Dictionary<String, String> = ["aa":"bb","cc":"dd"]
+        let myDic2 = myDic.filter{name,value in name != "aa"}
+        let myDic3 = myDic.map{name,value in name + "ee"}
+        DLog(message: myDic2)
+        DLog(message: myDic3)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // 註冊鍵盤出現/消失事件
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(note:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHidden(note:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // 取消註冊鍵盤出現/消失事件≥
+        NotificationCenter.default.removeObserver(self,name:NSNotification.Name.UIKeyboardWillShow, object:nil)
+        NotificationCenter.default.removeObserver(self,name:NSNotification.Name.UIKeyboardWillHide, object:nil)
+    }
+
+    @objc func keyboardWillShow(note: NSNotification) {
+        let userInfo = note.userInfo!
+        let keyBoardBounds = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let kybHeight = keyBoardBounds.size.height
+        let deltaY = self.testV.frame.origin.y + self.testV.frame.size.height + kybHeight - self.view.frame.size.height
+        if deltaY > 0{
+            self.view.transform = CGAffineTransform(translationX: 0, y: -deltaY)
+        }
+    }
+
+    @objc func keyboardWillHidden(note: NSNotification) {
+        self.view.transform = CGAffineTransform.identity
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        testTF.resignFirstResponder()
+        return true
+    }
+
+    func isPrime(n:Double) -> Bool{
+        if n <= 1 {return false}
+        if n <= 3 {return true}
+        var i:Double = 2
+        while i * i <= n{
+            if n.remainder(dividingBy: i) == 0
+            {
+                let a = (n / i).rounded(.toNearestOrEven)
+                print("i = \(i) a= \(a)")
+                return false
+            }
+            i += 1
+        }
+        return true
+    }
+
+
+
+    func factor(num1:Int, num2:Int) -> Int{
+        guard num1 > 0 else {return num2}
+        guard num2 > 0 else {return num1}
+        return num1 > num2 ? factor(num1:num1 - num2 , num2:num2) : factor(num1:num1 ,num2:num2-num1)
     }
 
     func greet(str:String){
@@ -152,6 +223,10 @@ class ViewController: UIViewController {
         if length < 2 {return inputArr[0]}
         for x in inputArr{
             var myDic = ["String":x]
+            //var myDic2 = [x:"test"]
+            var mytest = x
+            var mmya = Array<T>()
+            mmya.append(x)
         }
 
         return resultT as! T

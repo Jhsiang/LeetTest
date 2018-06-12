@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3D616B20CF7AAF00EC2DDF /* Defintion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D616A20CF7AAF00EC2DDF /* Defintion.swift */; };
 		0F4788D920B405D100BC8D70 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4788D820B405D100BC8D70 /* Graphics.swift */; };
 		0F4FF34A2099B8AC00B4D3DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF3492099B8AC00B4D3DE /* AppDelegate.swift */; };
 		0F4FF34C2099B8AC00B4D3DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF34B2099B8AC00B4D3DE /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F3D616A20CF7AAF00EC2DDF /* Defintion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defintion.swift; sourceTree = "<group>"; };
 		0F4788D820B405D100BC8D70 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
 		0F4FF3462099B8AC00B4D3DE /* LeetTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4FF3492099B8AC00B4D3DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				0F4788D820B405D100BC8D70 /* Graphics.swift */,
 				0F4FF3492099B8AC00B4D3DE /* AppDelegate.swift */,
 				0F4FF34B2099B8AC00B4D3DE /* ViewController.swift */,
+				0F3D616A20CF7AAF00EC2DDF /* Defintion.swift */,
 				0F4FF34D2099B8AC00B4D3DE /* Main.storyboard */,
 				0F4FF3502099B8AC00B4D3DE /* Assets.xcassets */,
 				0F4FF3522099B8AC00B4D3DE /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				0F4788D920B405D100BC8D70 /* Graphics.swift in Sources */,
 				0F4FF34C2099B8AC00B4D3DE /* ViewController.swift in Sources */,
+				0F3D616B20CF7AAF00EC2DDF /* Defintion.swift in Sources */,
 				0F4FF34A2099B8AC00B4D3DE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,7 +436,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6U79KUH842;
 				INFOPLIST_FILE = LeetTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -450,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6U79KUH842;
 				INFOPLIST_FILE = LeetTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

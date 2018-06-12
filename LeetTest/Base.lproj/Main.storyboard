@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,8 +21,41 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA5-3v-zgt">
+                                <rect key="frame" x="60" y="537" width="240" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jm5-5F-22H">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Z3A-xO-9a7"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jm5-5F-22H" firstAttribute="leading" secondItem="lA5-3v-zgt" secondAttribute="leading" id="DsE-6n-ck1"/>
+                                    <constraint firstItem="jm5-5F-22H" firstAttribute="top" secondItem="lA5-3v-zgt" secondAttribute="top" id="LRw-3L-jrO"/>
+                                    <constraint firstAttribute="trailing" secondItem="jm5-5F-22H" secondAttribute="trailing" id="Ojd-0Q-vF7"/>
+                                    <constraint firstAttribute="bottom" secondItem="jm5-5F-22H" secondAttribute="bottom" id="pgM-3M-CU2"/>
+                                    <constraint firstAttribute="height" constant="30" id="vyO-hP-J86"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gDb-B1-xEd" firstAttribute="top" secondItem="lA5-3v-zgt" secondAttribute="bottom" constant="100" id="CaA-pu-bQS"/>
+                            <constraint firstItem="lA5-3v-zgt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="44" id="MgB-jO-fSx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lA5-3v-zgt" secondAttribute="trailing" constant="59" id="Sar-ek-bb4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="testTF" destination="jm5-5F-22H" id="iw7-r5-2HR"/>
+                        <outlet property="testV" destination="lA5-3v-zgt" id="fm7-8B-rXD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
