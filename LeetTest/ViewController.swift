@@ -28,12 +28,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
         print("major num = \(majorityNum(inputArr: [1,2,2,2,2,2,3,4,5,6,7,8,2,2,2,2,2,2,2,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]))")
         print("major str = \(majorityStr(inputArr: ["c","E","E","E","E","ff","xx","E","E","E","E","E","E","E","E","E","E","E","E","E","E"]))")
 
+        // sorting test
         var myArr = Array<Int>()
         for x in 1...100{
             myArr.append(101-x)
         }
         let sortArr = quickSortingParkingArray(inputArr: myArr)
 
+        // autolayout button
         let addButton = UIButton()
         addButton.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         addButton.setImage(Graphics.getAddImageNormal(), for: UIControlState.normal)
@@ -41,6 +43,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         //self.view.addSubview(addButton)
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
 
+        // find factor
         print("factor = \(factor(num1: 736, num2: 414))")
         print("factor2 = \(factor(num1: 684, num2: 48))")
         let x:Double = 91
@@ -52,6 +55,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         let myDic3 = myDic.map{name,value in name + "ee"}
         DLog(message: myDic2)
         DLog(message: myDic3)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -216,15 +220,15 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
 
     func majorityElement<T>(inputArr:[T]) -> T {
-        var resultT = T.self
+        let resultT = T.self
         //var resultDic = [:2]
 
         let length = inputArr.count
         if length < 2 {return inputArr[0]}
         for x in inputArr{
-            var myDic = ["String":x]
+            let myDic = ["String":x]
             //var myDic2 = [x:"test"]
-            var mytest = x
+            let mytest = x
             var mmya = Array<T>()
             mmya.append(x)
         }
