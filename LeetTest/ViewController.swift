@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextFieldDelegate {
+class ViewController: UIViewController,UITextFieldDelegate,UIPageViewControllerDelegate
+//,UIPageViewControllerDataSource
+{
+
+    @IBOutlet var containerView: UIView!
 
     @IBOutlet var testV: UIView!
     @IBOutlet var testTF: UITextField!
+    @IBOutlet var myPageCtrl: UIPageControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +45,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         addButton.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         addButton.setImage(Graphics.getAddImageNormal(), for: UIControlState.normal)
         addButton.setImage(Graphics.getAddImageSelect(), for: UIControlState.highlighted)
-        //self.view.addSubview(addButton)
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
+        self.view.addSubview(addButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
 
         // find factor
         print("factor = \(factor(num1: 736, num2: 414))")
@@ -324,6 +329,15 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
         return quickSortingParkingArray(inputArr: less) + pivotArray + quickSortingParkingArray(inputArr: greater)
     }
+
+//MARK: - UIPageControlDataSource
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+//        <#code#>
+//    }
+//
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+//        <#code#>
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

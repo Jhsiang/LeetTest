@@ -14,7 +14,7 @@ class Graphics: NSObject {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 239, height: 119), false, 1.0)
 
         //// Color Declarations
-        let color = UIColor(red: 0.000, green: 0.000, blue: 1.000, alpha: 1.000)
+        let color = UIColor(red: 1.000, green: 0.000, blue: 1.000, alpha: 1.000)
 
         //// Rectangle Drawing
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0.5, y: 50.5, width: 239, height: 20))

@@ -20,13 +20,21 @@ class SecondViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var myTableView: UITableView!
     @IBOutlet var myCollectionView: UICollectionView!
+    @IBOutlet var myBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSLog("\(calCow(years: 30))")
+        myBtn.setImage(Graphics.getAddImageNormal(), for: .normal)
+
+        NSLog("cow = \(calCow(years: 10))")
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
+        if 8 ~= 9{
+            DLog(message: "8 ~= 9 is true")
+        }else{
+            DLog(message: "8 ~= 9 is false")
+        }
         let myAmountArray = Array(repeating: 10, count: 10)
         for i in 0...15{
             if let x = safeArr(arr: myAmountArray, index: i){
@@ -45,6 +53,9 @@ class SecondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return arr.indices ~= index ? arr[index] : nil
     }
 
+
+
+// MARK: - Btn Click
     @IBAction func btnClick(_ sender: Any) {
         let myEvent = event()
         myEvent.date = translate(d: datePicker.date)
@@ -59,22 +70,28 @@ class SecondViewController: UIViewController,UITableViewDelegate,UITableViewData
         let index1 = IndexPath(item: 4, section: 0)
         let index2 = IndexPath(item: 25, section: 0)
         myCollectionView.moveItem(at: index1, to: index2)
+
+        /*
 //        if #available(iOS 9.0, *) {
 //            myCollectionView.beginInteractiveMovementForItem(at: index1)
-//        } else {
+//        } else
 //            // Fallback on earlier versions
 //        }
+ */
     }
 
+/*
     //MARK: - UICollectionViewDropDelegate
 //    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
 //        let dragItem = UIDragItem
 //    }
-//
+     //
+
 //    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
 //        NSLog("perform Drop trigger")
 //    }
 
+*/
     //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 60
@@ -101,7 +118,7 @@ class SecondViewController: UIViewController,UITableViewDelegate,UITableViewData
             collectionView.scrollToItem(at: myIndex, at: .top, animated: true)
         }
         return myCell
-    }
+    } 
 
     //MARK: - UITablevVewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

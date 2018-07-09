@@ -19,3 +19,9 @@ func DLog<T> (message: T, fileName: String = #file, funcName: String = #function
     #endif
 
 }
+
+
+//WTF
+func ~=<T>(pattern: (T) -> Bool, value: T) -> Bool {
+    return pattern(value)
+}
