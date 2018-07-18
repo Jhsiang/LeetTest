@@ -46,6 +46,7 @@
 		0F4FF35F2099B8AC00B4D3DE /* LeetTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF35E2099B8AC00B4D3DE /* LeetTestTests.swift */; };
 		0F4FF36A2099B8AD00B4D3DE /* LeetTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF3692099B8AD00B4D3DE /* LeetTestUITests.swift */; };
 		0F7C98A020EA27DB0051AA9B /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C989F20EA27DB0051AA9B /* Script.swift */; };
+		0FB08F8120FD8169005A0FE5 /* UnitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB08F8020FD8169005A0FE5 /* UnitCollectionViewCell.swift */; };
 		0FCB682F20F7322600BE7318 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCB682E20F7322600BE7318 /* UnitViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		0F4FF3692099B8AD00B4D3DE /* LeetTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetTestUITests.swift; sourceTree = "<group>"; };
 		0F4FF36B2099B8AD00B4D3DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7C989F20EA27DB0051AA9B /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		0FB08F8020FD8169005A0FE5 /* UnitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCollectionViewCell.swift; sourceTree = "<group>"; };
 		0FCB682E20F7322600BE7318 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +220,7 @@
 				0F4F781620F3605500928814 /* DemoParkingViewController.swift */,
 				0F4F781820F3607B00928814 /* DemoParkingTableViewCell.swift */,
 				0FCB682E20F7322600BE7318 /* UnitViewController.swift */,
+				0FB08F8020FD8169005A0FE5 /* UnitCollectionViewCell.swift */,
 			);
 			path = LeetTest;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				0F4BD91C20DA367E000428A0 /* MyCollectionViewCell.swift in Sources */,
 				0F4788D920B405D100BC8D70 /* Graphics.swift in Sources */,
 				0F4FF34C2099B8AC00B4D3DE /* ViewController.swift in Sources */,
+				0FB08F8120FD8169005A0FE5 /* UnitCollectionViewCell.swift in Sources */,
 				0FCB682F20F7322600BE7318 /* UnitViewController.swift in Sources */,
 				0F7C98A020EA27DB0051AA9B /* Script.swift in Sources */,
 				0F3D616B20CF7AAF00EC2DDF /* Defintion.swift in Sources */,
