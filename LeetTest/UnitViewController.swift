@@ -34,6 +34,17 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
          [0,3,0,8,1,9,6,4,7]
          [4,1,7,0,6,3,0,8,0]
          [6,9,8,4,7,0,0,1,3]
+
+         [5,8,6,3,2,7,4,9,1]
+         [7,2,1,9,4,5,3,6,8]
+         [9,4,3,6,8,1,7,2,5]
+         [1,5,4,7,9,6,8,3,2]
+         [8,7,2,1,3,4,9,5,6]
+         [3,6,9,2,5,8,1,7,4]
+         [2,3,5,8,1,9,6,4,7]
+         [4,1,7,5,6,3,2,8,9]
+         [6,9,8,4,7,2,5,1,3]
+
  */
         var myArr = getArr()
         for row in 0...8{
@@ -67,25 +78,25 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
             }
             DLog(message: notZeroCount)
             if notZeroCount == recordNotZeroCount{
+                removeRowAndColumByEq()
+
+                // check data
+                /*
                 for i in 0...8{
                     let mySR = i / 3 + 3
                     let mySC = i % 3 + 6
                     DLog(message: "\(mySR)\(mySC) row = \(totalEQArr[mySR][mySC].row) colum = \(totalEQArr[mySR][mySC].colum) eq = \(totalEQArr[mySR][mySC].eq)")
                 }
+                */
+
+                // break
                 breakCount += 1
-                if breakCount >= 2{
+                if breakCount >= 3{
                     break
                 }
             }
             recordNotZeroCount = notZeroCount
             notZeroCount = 0
-
-            //check
-            for i in 0...8{
-                let mySR = i / 3 + 0
-                let mySC = i % 3 + 6
-                DLog(message: "\(mySR)\(mySC) row = \(totalEQArr[mySR][mySC].row) colum = \(totalEQArr[mySR][mySC].colum) eq = \(totalEQArr[mySR][mySC].eq)")
-            }
 
             // Main handle
             for row in 0...8{
@@ -163,7 +174,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                             let removeColum = colum % 3
                             let removeNum = removeRow * 3 + removeColum
                             let notSelf = i != removeNum
-                            if isMinimumEQ(oriEq: subEq[i]) == false && notSelf{
+                            if notSelf{
                                 for j in 0...subEq[i].eq.count - 1{
                                     targetEqOfEq = targetEqOfEq.filter{$0 != subEq[i].eq[j]}
                                 }
@@ -183,7 +194,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                         var targetEqOfRow = totalEQArr[row][colum].row
                         for i in 0...subRow.count-1{
                             let notSelf = i != colum
-                            if isMinimumEQ(oriEq: subRow[i]) == false && notSelf{
+                            if notSelf{
                                 for j in 0...subRow[i].row.count-1{
                                     targetEqOfRow = targetEqOfRow.filter{$0 != subRow[i].row[j]}
                                 }
@@ -193,6 +204,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                             totalEQArr[row][colum].row = targetEqOfRow
                         }
                     }
+
                     if isMinimumEQ(oriEq: totalEQArr[row][colum]){
                         continue
                     }
@@ -206,7 +218,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                         }
                         for i in 0...subColum.count-1{
                             let notSelf = i != row
-                            if isMinimumEQ(oriEq: subColum[i]) == false && notSelf{
+                            if notSelf{
                                 for j in 0...subColum[i].colum.count - 1{
                                     targetEqOfColum = targetEqOfColum.filter{$0 != subColum[i].colum[j]}
                                 }
@@ -220,52 +232,11 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                         continue
                     }
 
-                    do{
-                        var subEq = Array<eq>()
-                        var targetEqOfEq = totalEQArr[row][colum].eq
-                        subEq = getSubEqArr(oriArr: totalEQArr, row: row, colum: colum)
-
-                        for i in 0...subEq.count-1{
-                            let removeRow = row % 3
-                            let removeColum = colum % 3
-                            let removeNum = removeRow * 3 + removeColum
-                            let notSelf = i != removeNum
-                            if isMinimumEQ(oriEq: subEq[i]) == false && notSelf{
-                                for j in 0...subEq[i].eq.count - 1{
-                                    targetEqOfEq = targetEqOfEq.filter{$0 != subEq[i].eq[j]}
-                                }
-                            }
-                        }
-                        if targetEqOfEq.count == 1{
-                            totalEQArr[row][colum].eq = targetEqOfEq
-                        }
-                    }
-                    /*
-
-
-                    //test
-                    do{
-                        var space = 0
-                        let subRow = totalEQArr[row]
-                        for colum in 0...2{
-                            if isMinimumEQ(oriEq: subRow[colum]) == false{
-                                space += 1
-                            }
-                        }
-                        if subRow[colum].row.count == space{
-                            //clean 3...5 6...8 subRow[colum].row.filter {$0 != subRow[0..2].row[0...2]}
-                        }
-                        for colum in 0...subRow.count - 1{
-                            //check if anypoint is unit then totalEQArr[row][col].row.remove{$0 != unit}
-                        }
-                    }
- */
                 }
             }
             totalEQArr = minumumEQArr(eqArrArr: totalEQArr)
             sameOfSpaceAndEqCount()
-            removeRowAndColumByEq()
-
+            //removeRowAndColumByEq()
         }
         showArr = showEQArrToNum(oriEQArrArr: totalEQArr)
         DLog(message: isCompete(oriEQArrArr: totalEQArr))
@@ -310,13 +281,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
 
     //MARK: - Define Function
     func removeRowAndColumByEq(){
-        /*
-         33 row = [3, 5, 6] colum = [3, 5, 6] eq = [3, 5, 6]
-         43 row = [3, 4] colum = [3, 4] eq = [3, 4]
-         53 row = [3, 4, 5, 6] colum = [3, 4, 5, 6] eq = [3, 4, 5, 6]
-         54 row = [3, 4, 5, 6, 7] colum = [3, 4, 5, 6, 7] eq = [3, 4, 5, 6, 7]
-         55 row = [3, 4, 5, 6, 7] colum = [3, 4, 5, 6, 7] eq = [3, 4, 5, 6, 7]
-         */
+
         for nextBigEq in 0...8{
             let nextRow = nextBigEq / 3 //0~2
             let nextColum = nextBigEq % 3 //0~2
@@ -349,23 +314,36 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                         let row = everyBigEq / 3 + nextRow * 3
                         let colum = everyBigEq % 3 + nextColum * 3
                         if isMinimumEQ(oriEq: totalEQArr[row][colum]) == false{
-                            if (totalEQArr[row][colum].row.filter{$0 == totalNumArr[i]} != []){
+                            if (totalEQArr[row][colum].eq.filter{$0 == totalNumArr[i]} != []){
                                 rowArr.append(row)
                                 columArr.append(colum)
                             }
                         }
                     }
+                    if rowArr.count == 1, columArr.count == 1{
+                        DLog(message: "clean \(totalNumArr[i]) row\(rowArr) colum\(columArr)")
+                        let row = rowArr[0]
+                        let colum = columArr[0]
+                        let num = totalNumArr[i]
+                        totalEQArr[row][colum].eq = [num]
+                        totalEQArr[row][colum] = minimumEQ(oriEq: totalEQArr[row][colum])
+                        continue
+                    }
                     if rowArr.count > 0, columArr.count > 0{
                         if (rowArr.filter{$0 != rowArr[0]} == []){
+                            DLog(message: "clean \(totalNumArr[i]) row\(rowArr) colum\(columArr)")
                             subRemoveRowByEq(deletRow: rowArr[0], deletNum: totalNumArr[i], nowColum: columArr[0])
-                        }
-                        if (columArr.filter{$0 != columArr[0]} == []){
+                        }else if (columArr.filter{$0 != columArr[0]} == []){
+                            DLog(message: "clean \(totalNumArr[i]) row\(rowArr) colum\(columArr)")
                             subRemoveColumByEq(deletColum: columArr[0], deletNum: totalNumArr[i], nowRow: rowArr[0])
                         }
                     }
+
                 }
             }
         }
+
+        totalEQArr = minumumEQArr(eqArrArr: totalEQArr)
 
         for row in 0...8{
             for colum in 0...8{
@@ -379,7 +357,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                         let removeColum = colum % 3
                         let removeNum = removeRow * 3 + removeColum
                         let notSelf = i != removeNum
-                        if isMinimumEQ(oriEq: subEq[i]) == false && notSelf{
+                        if notSelf{
                             for j in 0...subEq[i].eq.count - 1{
                                 targetEqOfEq = targetEqOfEq.filter{$0 != subEq[i].eq[j]}
                             }
@@ -387,12 +365,12 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                     }
                     if targetEqOfEq.count == 1{
                         totalEQArr[row][colum].eq = targetEqOfEq
+                        totalEQArr[row][colum] = minimumEQ(oriEq: totalEQArr[row][colum])
                     }
                 }
             }
         }
 
-        totalEQArr = minumumEQArr(eqArrArr: totalEQArr)
     }
 
     func subRemoveRowByEq(deletRow:Int,deletNum:Int,nowColum:Int){
@@ -423,6 +401,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
         default:
             break
         }
+        totalEQArr = minumumEQArr(eqArrArr: totalEQArr)
     }
 
     func subRemoveColumByEq(deletColum:Int,deletNum:Int,nowRow:Int){
@@ -453,6 +432,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
         default:
             break
         }
+        totalEQArr = minumumEQArr(eqArrArr: totalEQArr)
     }
 
     func sameOfSpaceAndEqCount(){
@@ -722,7 +702,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                           [6,2,0,0,0,1,0,0,0],
                           [5,0,0,6,0,0,0,0,8]]
 
-        let arrLevel20 = [[0,8,0,0,0,7,0,0,1],
+        let arrLevel30 = [[0,8,0,0,0,7,0,0,1],
                           [0,0,0,9,0,0,3,0,8],
                           [9,0,0,6,8,0,0,2,0],
                           [0,0,4,7,0,0,0,3,0],
@@ -762,6 +742,26 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                           [0,0,0,0,0,0,0,0,8],
                           [0,0,0,0,0,0,0,0,0]]
 
+        let arrLevel20 = [[0,0,0,0,6,8,0,3,0],
+                          [1,9,0,0,0,0,0,0,0],
+                          [8,0,3,1,0,0,2,0,0],
+                          [4,0,0,0,5,1,0,6,0],
+                          [7,0,0,0,2,0,0,0,4],
+                          [0,0,0,0,7,0,8,0,0],
+                          [0,1,0,0,0,5,0,0,7],
+                          [0,0,4,0,0,0,0,0,0],
+                          [0,5,0,0,3,0,1,0,0]]
+
+        let arrLevel25 = [[0,0,0,0,0,0,0,0,9],
+                          [0,0,9,0,0,0,0,0,1],
+                          [5,0,0,0,0,4,0,0,0],
+                          [0,0,0,8,3,0,1,0,0],
+                          [0,1,0,7,0,0,3,0,0],
+                          [7,0,0,0,9,6,0,0,0],
+                          [0,6,0,0,7,0,4,0,0],
+                          [3,7,0,5,0,0,0,0,8],
+                          [0,8,0,0,0,0,0,6,0]]
+
         let arrLevelXX = [[0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0],
@@ -772,7 +772,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                           [0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0]]
 
-        return arrLevel20
+        return arrLevel25
     }
     
     override func didReceiveMemoryWarning() {
