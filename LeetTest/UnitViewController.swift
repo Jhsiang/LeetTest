@@ -45,6 +45,16 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
          [4,1,7,5,6,3,2,8,9]
          [6,9,8,4,7,2,5,1,3]
 
+         [[5],          [8],          [1, 6, 7], [3, 7],          [2],          [6, 7, 9],    [1, 3, 6, 9], [4],       [3, 6]]
+         [[1, 2],       [9],          [1, 2, 6], [3, 4, 5, 8],    [3, 4, 6, 8], [4, 5, 6],    [1, 3, 5, 6], [7],       [2, 3, 5, 6, 8]]
+         [[2, 7],       [4],          [3],       [5, 7, 8],       [6, 7, 8, 9], [1],          [5, 6, 9],    [5, 6, 8], [2, 5, 6, 8]]
+         [[1, 2, 3, 7], [1, 2, 7],    [4],       [1, 2, 3, 5, 7], [3, 6, 7],    [2, 5, 6, 7], [8],          [9],       [5, 6, 7]]
+         [[8],          [6],          [5],       [4, 7],          [4, 7, 9],    [4, 7, 9],    [2],          [3],       [1]]
+         [[1, 2, 3, 7], [1, 2, 7],    [9],       [1, 2, 3, 5, 7], [3, 6, 7],    [8],          [4],          [5, 6],    [5, 6, 7]]
+         [[6],          [5],          [8],       [9],             [1],          [3],          [7],          [2],       [4]]
+         [[4],          [1, 2, 3, 7], [1, 2, 7], [6],             [7, 8],       [2, 7],       [3, 5],       [1, 5, 8], [9]]
+         [[9],          [1, 2, 3, 7], [1, 2, 7], [2, 4, 7, 8],    [5],          [2, 4, 7],    [3, 6],       [1, 6, 8], [3, 6, 8]]
+
  */
         var myArr = getArr()
         for row in 0...8{
@@ -66,7 +76,8 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
         var breakCount = 0
         // 1st
         while isCompete(oriEQArrArr: totalEQArr) == false {
-
+//2874 4827 4872 7824 8724
+//271327131627 2731
             // Break Function
             count += 1
             DLog(message: count)
@@ -87,8 +98,9 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                     let mySC = i % 3 + 6
                     DLog(message: "\(mySR)\(mySC) row = \(totalEQArr[mySR][mySC].row) colum = \(totalEQArr[mySR][mySC].colum) eq = \(totalEQArr[mySR][mySC].eq)")
                 }
-                */
+                 jnrtjns
 
+                */
                 // break
                 breakCount += 1
                 if breakCount >= 3{
@@ -240,6 +252,9 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
         showArr = showEQArrToNum(oriEQArrArr: totalEQArr)
         DLog(message: isCompete(oriEQArrArr: totalEQArr))
+        if isCompete(oriEQArrArr: totalEQArr) == false{
+            showFalseEQArrToNum(oriEQArrArr: totalEQArr)
+        }
     }
 
     //MARK: - Button Click
@@ -604,11 +619,44 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
             }
         }
         for i in 0...8{
-            DLog(message: myShowArr[i])
+            print("\(myShowArr[i])")
+            //DLog(message: myShowArr[i])
         }
         return myShowArr
     }
 
+    func showFalseEQArrToNum(oriEQArrArr:Array<Array<eq>>) -> Array<Array<Array<Int>>> {
+        var myShowArr = Array(repeating: Array(repeating: [], count: 9), count: 9)
+
+        for row in 0...8{
+            for colum in 0...8{
+                if oriEQArrArr[row][colum].colum.count == 1{
+                    myShowArr[row][colum] = [oriEQArrArr[row][colum].colum[0]]
+                }else if oriEQArrArr[row][colum].row.count == 1{
+                    myShowArr[row][colum] = [oriEQArrArr[row][colum].row[0]]
+                }else if oriEQArrArr[row][colum].eq.count == 1{
+                    myShowArr[row][colum] = [oriEQArrArr[row][colum].eq[0]]
+                }else{
+                    myShowArr[row][colum] = oriEQArrArr[row][colum].eq
+                }
+            }
+        }
+        for i in 0...8{
+            DLog(message: myShowArr[i])
+        }
+        return myShowArr as! Array<Array<Array<Int>>>
+    }
+    /*
+     [5, 8, 0, 0, 2, 0, 0, 4, 0]
+     [0, 9, 0, 0, 0, 0, 0, 7, 0]
+     [0, 4, 3, 0, 0, 1, 0, 0, 0]
+     [0, 0, 4, 0, 0, 0, 8, 9, 0]
+     [8, 6, 5, 0, 0, 0, 2, 3, 1]
+     [0, 0, 9, 0, 0, 8, 4, 0, 0]
+     [6, 5, 8, 9, 1, 3, 7, 2, 4]
+     [4, 0, 0, 6, 0, 0, 0, 0, 9]
+     [9, 0, 0, 0, 5, 0, 0, 0, 0]
+     */
 
     func setNumToEqArr(oriEQ:eq,num:Int) -> eq{
         oriEQ.colum = [num]
@@ -742,6 +790,26 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                           [0,0,0,0,0,0,0,0,8],
                           [0,0,0,0,0,0,0,0,0]]
 
+        let arrLevel18 = [[0,0,0,0,0,0,0,0,1],
+                          [0,0,0,0,2,0,0,0,0],
+                          [0,0,0,0,3,8,0,0,0],
+                          [0,2,3,4,0,0,5,6,0],
+                          [0,0,0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,0,0,0],
+                          [0,0,0,0,4,7,0,0,0],
+                          [0,0,0,0,5,0,0,0,0],
+                          [0,1,0,0,0,0,0,0,0]]
+
+        let arrLevel19 = [[0,0,0,0,0,0,8,0,0],
+                          [0,0,0,0,0,0,0,2,0],
+                          [0,0,0,0,0,0,0,7,0],
+                          [2,0,0,0,0,0,0,0,9],
+                          [0,7,0,0,0,0,0,0,0],
+                          [0,0,0,1,3,0,5,0,0],
+                          [0,0,0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,0,8,0],
+                          [0,0,0,0,0,0,0,0,0]]
+
         let arrLevel20 = [[0,0,0,0,6,8,0,3,0],
                           [1,9,0,0,0,0,0,0,0],
                           [8,0,3,1,0,0,2,0,0],
@@ -752,15 +820,15 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                           [0,0,4,0,0,0,0,0,0],
                           [0,5,0,0,3,0,1,0,0]]
 
-        let arrLevel25 = [[0,0,0,0,0,0,0,0,9],
-                          [0,0,9,0,0,0,0,0,1],
-                          [5,0,0,0,0,4,0,0,0],
-                          [0,0,0,8,3,0,1,0,0],
-                          [0,1,0,7,0,0,3,0,0],
-                          [7,0,0,0,9,6,0,0,0],
-                          [0,6,0,0,7,0,4,0,0],
-                          [3,7,0,5,0,0,0,0,8],
-                          [0,8,0,0,0,0,0,6,0]]
+        let arrLevel25 = [[5,0,0,0,2,0,0,0,0],
+                          [0,9,0,0,0,0,0,7,0],
+                          [0,4,3,0,0,1,0,0,0],
+                          [0,0,4,0,0,0,8,9,0],
+                          [0,6,0,0,0,0,0,0,1],
+                          [0,0,9,0,0,8,4,0,0],
+                          [0,0,8,9,0,0,7,2,4],
+                          [0,0,0,6,0,0,0,0,9],
+                          [0,0,0,0,5,0,0,0,0]]
 
         let arrLevelXX = [[0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0],
