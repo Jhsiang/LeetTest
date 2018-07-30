@@ -84,56 +84,82 @@ class ImageViewTestViewController: UIViewController {
         let image = UIImage(named: "ad1.jpeg")
         var subTransform = CATransform3DIdentity
 
-        /*
-          3
-         5126
-          4
-        */
         //1
         let subView1 = UIImageView.init(frame: myIV1.bounds)
-        subView1.image = image
+        let label1 = UILabel.init(frame: myIV1.bounds)
+        label1.text = "1"
+        label1.adjustsFontSizeToFitWidth = true
+        label1.textAlignment = .center
+        label1.backgroundColor = UIColor.yellow
+        subView1.addSubview(label1)
+        //subView1.image = image
         subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.width/2)
         subView1.layer.transform = subTransform
 
         //2
         let subView2 = UIImageView.init(frame: myIV1.bounds)
-        subView2.image = image
+        let label2 = UILabel.init(frame: myIV1.bounds)
+        label2.text = "2"
+        label2.adjustsFontSizeToFitWidth = true
+        label2.textAlignment = .center
+        subView2.addSubview(label2)
+        label2.backgroundColor = UIColor.yellow
+        //subView2.image = image
         subTransform = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), 0, 1, 0)
         subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.width/2)
         subView2.layer.transform = subTransform
 
         //3
         let subView3 = UIImageView.init(frame: myIV1.bounds)
-
-        subView3.image = image
+        let label3 = UILabel.init(frame: myIV1.bounds)
+        label3.text = "3"
+        label3.adjustsFontSizeToFitWidth = true
+        label3.textAlignment = .center
+        subView3.addSubview(label3)
+        label3.backgroundColor = UIColor.yellow
+        //subView3.image = image
         subTransform = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), 1, 0, 0)
-        subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.height/2+50)
-        subView3.frame.size.width = subView3.frame.width > subView3.frame.height ? subView3.frame.width : subView3.frame.height
-        subView3.frame.size.height = subView3.frame.width > subView3.frame.height ? subView3.frame.width : subView3.frame.height
+        subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.height/2)
         subView3.layer.transform = subTransform
 
         //4
         let subView4 = UIImageView.init(frame: myIV1.bounds)
-
-        subView4.image = image
+        let label4 = UILabel.init(frame: myIV1.bounds)
+        label4.text = "4"
+        label4.adjustsFontSizeToFitWidth = true
+        label4.textAlignment = .center
+        subView4.addSubview(label4)
+        label4.backgroundColor = UIColor.yellow
+        //subView4.image = image
         subTransform = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), -1, 0, 0)
-        subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.height/2-60)
-        subView4.frame.size.width = subView3.frame.width > subView3.frame.height ? subView3.frame.width : subView3.frame.height
-        subView4.frame.size.height = subView3.frame.width > subView3.frame.height ? subView3.frame.width : subView3.frame.height
+        subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.height/2)
+
         subView4.layer.transform = subTransform
 
         //5
         let subView5 = UIImageView.init(frame: myIV1.bounds)
-        subView5.image = image
+        let label5 = UILabel.init(frame: myIV1.bounds)
+        label5.text = "5"
+        label5.adjustsFontSizeToFitWidth = true
+        label5.textAlignment = .center
+        subView5.addSubview(label5)
+        label5.backgroundColor = UIColor.yellow
+        //subView5.image = image
         subTransform = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), 0, -1, 0)
         subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.width/2)
         subView5.layer.transform = subTransform
 
         //6
         let subView6 = UIImageView.init(frame: myIV1.bounds)
-        subView6.image = image
-        subTransform = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), 0, 0, 0)
-        subTransform = CATransform3DTranslate(subTransform, 0, 0, -myIV1.frame.size.width/2)
+        let label6 = UILabel.init(frame: myIV1.bounds)
+        label6.text = "6"
+        label6.adjustsFontSizeToFitWidth = true
+        label6.textAlignment = .center
+        subView6.addSubview(label6)
+        label6.backgroundColor = UIColor.yellow
+        //subView6.image = image
+        subTransform = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi), 0, 1, 0)
+        subTransform = CATransform3DTranslate(subTransform, 0, 0, myIV1.frame.size.width/2)
         subView6.layer.transform = subTransform
 
         myIV1.addSubview(subView1)
