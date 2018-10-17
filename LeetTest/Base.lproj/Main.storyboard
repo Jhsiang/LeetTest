@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8fj-ZL-3Oe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -478,6 +478,25 @@
             </objects>
             <point key="canvasLocation" x="3080.8000000000002" y="-777.66116941529242"/>
         </scene>
+        <!--Take Photo View Controller-->
+        <scene sceneID="GO6-uI-Qfa">
+            <objects>
+                <viewController id="1AM-an-tK4" customClass="TakePhotoViewController" customModule="LeetTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xhy-iL-EFj"/>
+                        <viewControllerLayoutGuide type="bottom" id="twb-L4-Pae"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V0x-6D-Gl9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PRZ-p3-Hi1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1RS-KV-0f6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5076" y="-776.76161919040487"/>
+        </scene>
         <!--Image View Test View Controller-->
         <scene sceneID="ChB-hy-2r2">
             <objects>
@@ -568,6 +587,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3081" y="-77"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dQN-gz-uoE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LVU-JV-9DV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lgU-QF-SAy">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1AM-an-tK4" kind="relationship" relationship="rootViewController" id="WFz-2b-V6L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCx-mf-7Uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4136.8000000000002" y="-777.66116941529242"/>
         </scene>
     </scenes>
     <resources>

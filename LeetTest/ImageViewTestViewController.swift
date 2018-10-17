@@ -27,7 +27,44 @@ class ImageViewTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var myArr = Array<String>()
+        var son = 63
+        var mom = 64
+        while son != 1 {
+            let q = mom / son
+            let nextMom = q + 1
+            myArr.append("1/\(nextMom)")
+            (son,mom) = spareHandle(son1: son, mom1: mom, son2: 1, mom2: nextMom)
+        }
+        myArr.append("1/\(mom)")
 
+
+        DLog(message: myArr)
+        /*
+         */
+    }
+
+    func spareHandle(son1:Int,mom1:Int,son2:Int,mom2:Int) -> (Int,Int){
+        let son = son1 * mom2 - son2 * mom1
+        let mom = mom1 * mom2
+        return minmumNum(son: son, mom: mom)
+    }
+
+    func minmumNum(son:Int,mom:Int) ->(Int,Int){
+        let calSon = son
+        let calMom = mom
+        guard son != 1 else{
+            return (calSon,calMom)
+        }
+        guard mom != 1 else{
+            return (calSon,calMom)
+        }
+        for x in 2...calSon{
+            if calSon % x == 0,calMom % x == 0{
+                return minmumNum(son:calSon/x, mom:calMom/x)
+            }
+        }
+        return (calSon,calMom)
     }
 
     override func viewDidAppear(_ animated: Bool) {

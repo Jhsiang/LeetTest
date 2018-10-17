@@ -24,38 +24,36 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
 
     override func viewDidLoad() {
         super.viewDidLoad()
-/*
-           0 1 2 3 4 5 6 7 8
-        0 [0,8,6,3,0,7,4,9,1]
-        1 [7,0,1,9,4,0,3,6,8]
-        2 [9,4,3,6,8,1,7,2,5]
-        3 [1,0,4,7,0,6,8,3,0]
-        4 [8,7,0,1,3,4,0,5,6]
-        5 [3,6,0,0,0,8,1,7,4]
-        6 [0,3,0,8,1,9,6,4,7]
-        7 [4,1,7,0,6,3,0,8,0]
-        8 [6,9,8,4,7,0,0,1,3]
 
-         [5,8,6,3,2,7,4,9,1]
-         [7,2,1,9,4,5,3,6,8]
-         [9,4,3,6,8,1,7,2,5]
-         [1,5,4,7,9,6,8,3,2]
-         [8,7,2,1,3,4,9,5,6]
-         [3,6,9,2,5,8,1,7,4]
-         [2,3,5,8,1,9,6,4,7]
-         [4,1,7,5,6,3,2,8,9]
-         [6,9,8,4,7,2,5,1,3]
+        DLog(message: testClassShare.share.isReady()) // false
 
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 0 [[2, 5], [8],    [6],       [3],    [2, 5],    [7],    [4],       [9], [1]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 1 [[7],    [2, 5], [1],       [9],    [4],       [2, 5], [3],       [6], [8]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 2 [[9],    [4],    [3],       [6],    [8],       [1],    [7],       [2], [5]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 3 [[1],    [2, 5], [4],       [7],    [2, 5, 9], [6],    [8],       [3], [2, 9]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 4 [[8],    [7],    [2, 9],    [1],    [3],       [4],    [2, 9],    [5], [6]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 5 [[3],    [6],    [2, 5, 9], [2, 5], [2, 5, 9], [8],    [1],       [7], [4]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 6 [[2, 5], [3],    [2, 5],    [8],    [1],       [9],    [6],       [4], [7]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 7 [[4],    [1],    [7],       [2, 5], [6],       [3],    [2, 5, 9], [8], [2, 9]]
-         -UnitViewController.swift showFalseEQArrToNum(oriEQArrArr:)-[739]: 8 [[6],    [9],    [8],       [4],    [7],       [2, 5], [2, 5],    [1], [3]]
- */
+        var myTestArr = [testClassShare.share.a,testClassShare.share.b,testClassShare.share.c,testClassShare.share.d]
+
+        DLog(message: myTestArr) //[1,2,3,4]
+
+        testClassShare.share.add()
+
+        myTestArr = [testClassShare.share.a,testClassShare.share.b,testClassShare.share.c,testClassShare.share.d]
+
+        DLog(message: myTestArr) //[2,2,3,4]
+
+        testClassShare.share.add()
+        testClassShare.share.add()
+        testClassShare.share.add()
+
+        DLog(message: myTestArr) //[2,2,3,4]
+
+        DLog(message: testClassShare.share.isReady()) //true
+
+        testClassShare.share.clean()
+
+        DLog(message: testClassShare.share.isReady()) //false
+
+        myTestArr = [testClassShare.share.a,testClassShare.share.b,testClassShare.share.c,testClassShare.share.d]
+
+        DLog(message: myTestArr)//[1,2,3,4]
+
+        myTestArr = [testClassShare.share.a,testClassShare.share.b,testClassShare.share.c,testClassShare.share.d]
 
         var myArr = getArr()
         for row in 0...8{
@@ -71,6 +69,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                 }
             }
         }
+
         var count = 0
         var notZeroCount = 0
         var recordNotZeroCount = 0
@@ -238,10 +237,12 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
             sameOfSpaceAndEqCount()
             sameOfSpaceAndRowCount()
             sameOfSpaceAndColumCount()
-            //removeRowAndColumByEq()
         }
         showArr = showEQArrToNum(oriEQArrArr: totalEQArr)
         DLog(message: isCompete(oriEQArrArr: totalEQArr))
+        if isCompete(oriEQArrArr: totalEQArr) == false{
+            showFalseEQArrToNum(oriEQArrArr: totalEQArr)
+        }
         if isCompete(oriEQArrArr: totalEQArr) == false{
             showFalseEQArrToNum(oriEQArrArr: totalEQArr)
         }
@@ -870,7 +871,15 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                            [0,0,5,0,1,0,6,0,0],
                            [0,1,7,0,6,0,0,8,0],
                            [6,0,0,0,0,2,0,0,3]]
-
+        let temp = [[0,0,0,0,0,0,8,0,0],
+                    [0,0,0,0,0,0,0,2,0],
+                    [0,0,0,0,0,0,0,7,0],
+                    [2,0,0,0,0,0,0,0,9],
+                    [0,7,0,0,0,0,0,0,0],
+                    [0,0,0,1,3,0,5,0,0],
+                    [0,0,0,0,0,0,0,0,0],
+                    [0,0,0,0,0,0,0,8,0],
+                    [0,0,0,0,0,0,0,0,0]]
         let arrLevelXX = [[0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0],
@@ -881,7 +890,7 @@ class UnitViewController: UIViewController,UICollectionViewDelegate,UICollection
                           [0,0,0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0,0,0]]
 
-        return arrLevel15
+        return arrLevel10
     }
 
     override func didReceiveMemoryWarning() {

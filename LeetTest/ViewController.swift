@@ -21,6 +21,35 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPageViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
+         if let range = str.range(of: "456"){
+         let startIndex = range.upperBound
+         let endIndex = range.lowerBound
+         print(str.suffix(from: startIndex)) //789
+         print(str.prefix(upTo: startIndex)) //123456
+         print(str.suffix(from: endIndex)) //456789
+         print(str.prefix(upTo: endIndex)) //123
+         print(str.prefix(5)) //12345
+         print(str.suffix(5)) //56789
+         }
+         */
+
+        /*
+         let az = (0x41...0x5A).map({Character(UnicodeScalar($0))})
+         let num = (0x30...0x39).map({Character(UnicodeScalar($0))})
+         var myArr = num + az
+         print(myArr)
+         */
+
+        let str2 = ""
+        var myLabel = UILabel.init(frame: self.view.frame)
+        myLabel.text = str
+        myLabel.numberOfLines = 0
+        self.view.addSubview(myLabel)
+        print(str)
+
+
+
         print("\(strReverse(str: "nosaj"))")
         print("\(strAnagram(str1: "jason", str2: "sonaj"))")
         print("add Digits =\(addDigits(inputNum: 345))")
