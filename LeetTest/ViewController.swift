@@ -43,10 +43,10 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPageViewControllerD
 
         let str2 = ""
         var myLabel = UILabel.init(frame: self.view.frame)
-        myLabel.text = str
+        myLabel.text = str2
         myLabel.numberOfLines = 0
         self.view.addSubview(myLabel)
-        print(str)
+        print(str2)
 
 
 
