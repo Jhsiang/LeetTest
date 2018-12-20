@@ -9,14 +9,24 @@
 import UIKit
 
 class CollectGestureTestViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
-    var arrData = Array(0...29)
+    var arrData = Array<Int>()
     @IBOutlet var myCollectionView: UICollectionView!
+
+    let arrColor:Array<UIColor> = [.blue,.red,.green,.purple,.yellow,.brown]
+    var startIndexPath = IndexPath()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        for i in 0...29{
+            arrData.append(Int.random(in: 0...5))
+        }
+
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myCollectionView.addGestureRecognizer(setLongPress())
+
+
 
     }
 
@@ -31,11 +41,35 @@ class CollectGestureTestViewController: UIViewController,UICollectionViewDelegat
         switch sender.state {
         case .began:
             if let selectIndexpath = myCollectionView.indexPathForItem(at: sender.location(in: sender.view!)){
+                startIndexPath = selectIndexpath
                 myCollectionView.beginInteractiveMovementForItem(at: selectIndexpath)
             }
+
             break
         case .changed:
-            myCollectionView.updateInteractiveMovementTargetPosition(sender.location(in: sender.view!))
+
+            if let moveIndexpath = myCollectionView.indexPathForItem(at: sender.location(in: sender.view!)){
+                if startIndexPath == moveIndexpath{
+                    myCollectionView.updateInteractiveMovementTargetPosition(sender.location(in: sender.view!))
+                }else{
+
+                    // array swap
+                    let swapValue = arrData[startIndexPath.row]
+                    arrData[startIndexPath.row] = arrData[moveIndexpath.row]
+                    arrData[moveIndexpath.row] = swapValue
+
+                    // update startIndex
+                    startIndexPath = moveIndexpath
+
+                    self.myCollectionView.reloadData()
+
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.001) {
+                        self.myCollectionView.endInteractiveMovement()
+                        self.myCollectionView.beginInteractiveMovementForItem(at: self.startIndexPath)
+                        self.myCollectionView.updateInteractiveMovementTargetPosition(sender.location(in: sender.view!))
+                    }
+                }
+            }
             break
         case .ended:
             myCollectionView.endInteractiveMovement()
@@ -52,7 +86,6 @@ class CollectGestureTestViewController: UIViewController,UICollectionViewDelegat
     }
 
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        print("can move")
         return true
     }
 
@@ -66,8 +99,9 @@ class CollectGestureTestViewController: UIViewController,UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "move_cell", for: indexPath) as! GestureCollectionViewCell
 
         cell.label.text = "\(arrData[indexPath.row])"
+        let bgColor = arrColor[arrData[indexPath.row]%6]
+        cell.backgroundColor = bgColor
         cell.label.adjustsFontSizeToFitWidth = true
-        cell.layer.borderWidth = 2
 
         return cell
     }
@@ -93,4 +127,6 @@ class CollectGestureTestViewController: UIViewController,UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+
 }
+
