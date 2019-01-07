@@ -16,7 +16,7 @@ class TakePhotoViewController: UIViewController,UIImagePickerControllerDelegate,
         super.viewDidLoad()
 
         if let myStr = UserDefaults.standard.string(forKey: "car"){
-            DLog(message: myStr)
+            //DLog(message: myStr)
             DLog(message: myStr.count)
         }
 
@@ -27,8 +27,8 @@ class TakePhotoViewController: UIViewController,UIImagePickerControllerDelegate,
             picker.allowsEditing = false
             picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.photo
             picker.cameraFlashMode = UIImagePickerControllerCameraFlashMode.auto
-            //picker.showsCameraControls
-            //self.present(picker, animated: true, completion: nil)
+            picker.showsCameraControls = true
+            self.present(picker, animated: true, completion: nil)
         } else {
             print("沒有相機鏡頭...")
         }
@@ -42,7 +42,7 @@ class TakePhotoViewController: UIViewController,UIImagePickerControllerDelegate,
         let drawImage = resizeImage(originalImg: myPickerIg)
         let imageData:NSData = UIImageJPEGRepresentation(drawImage, 0.5)! as NSData
         let str64 = imageData.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters)
-        //UserDefaults.standard.set(str64, forKey: "car")
+        UserDefaults.standard.set(str64, forKey: "car")
 
         self.navigationController?.popViewController(animated: true)
 

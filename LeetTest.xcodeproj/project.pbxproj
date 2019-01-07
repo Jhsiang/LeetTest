@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0BE03021DF66FC001D57A8 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0BE02F21DF66FC001D57A8 /* MenuTableViewController.swift */; };
 		0F18E15821CA33BD001D5C44 /* CollectGestureTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E15721CA33BD001D5C44 /* CollectGestureTestViewController.swift */; };
 		0F18E15A21CA3A4B001D5C44 /* GestureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E15921CA3A4B001D5C44 /* GestureCollectionViewCell.swift */; };
 		0F1DC43F21A24DCD009D3CB5 /* TestLagViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1DC43E21A24DCD009D3CB5 /* TestLagViewViewController.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0BE02F21DF66FC001D57A8 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0F18E15721CA33BD001D5C44 /* CollectGestureTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectGestureTestViewController.swift; sourceTree = "<group>"; };
 		0F18E15921CA3A4B001D5C44 /* GestureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureCollectionViewCell.swift; sourceTree = "<group>"; };
 		0F1DC43E21A24DCD009D3CB5 /* TestLagViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLagViewViewController.swift; sourceTree = "<group>"; };
@@ -219,13 +221,13 @@
 				0F1DC43E21A24DCD009D3CB5 /* TestLagViewViewController.swift */,
 				0F4FF3492099B8AC00B4D3DE /* AppDelegate.swift */,
 				0F4FF34B2099B8AC00B4D3DE /* ViewController.swift */,
+				0F3D616E20CFC67900EC2DDF /* SecondViewController.swift */,
 				0F3D616A20CF7AAF00EC2DDF /* Defintion.swift */,
 				0F4FF34D2099B8AC00B4D3DE /* Main.storyboard */,
 				0F4FF3502099B8AC00B4D3DE /* Assets.xcassets */,
 				0F4FF3522099B8AC00B4D3DE /* LaunchScreen.storyboard */,
 				0F4FF3552099B8AC00B4D3DE /* Info.plist */,
 				0F3D616C20CFC07F00EC2DDF /* cow.swift */,
-				0F3D616E20CFC67900EC2DDF /* SecondViewController.swift */,
 				0F4BD91B20DA367E000428A0 /* MyCollectionViewCell.swift */,
 				0F7C989F20EA27DB0051AA9B /* Script.swift */,
 				0F4F781620F3605500928814 /* DemoParkingViewController.swift */,
@@ -236,6 +238,7 @@
 				0F4C1989213552210073D2D5 /* TakePhotoViewController.swift */,
 				0F18E15721CA33BD001D5C44 /* CollectGestureTestViewController.swift */,
 				0F18E15921CA3A4B001D5C44 /* GestureCollectionViewCell.swift */,
+				0F0BE02F21DF66FC001D57A8 /* MenuTableViewController.swift */,
 			);
 			path = LeetTest;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				0F3D616B20CF7AAF00EC2DDF /* Defintion.swift in Sources */,
 				0F62372C2101724D00527764 /* ImageViewTestViewController.swift in Sources */,
 				0F4FF34A2099B8AC00B4D3DE /* AppDelegate.swift in Sources */,
+				0F0BE03021DF66FC001D57A8 /* MenuTableViewController.swift in Sources */,
 				0F18E15A21CA3A4B001D5C44 /* GestureCollectionViewCell.swift in Sources */,
 				0F4C198A213552210073D2D5 /* TakePhotoViewController.swift in Sources */,
 				0F3D616D20CFC08000EC2DDF /* cow.swift in Sources */,

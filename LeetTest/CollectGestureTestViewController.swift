@@ -21,7 +21,7 @@ class CollectGestureTestViewController: UIViewController,UICollectionViewDelegat
         for i in 0...29{
             arrData.append(Int.random(in: 0...5))
         }
-
+        
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myCollectionView.addGestureRecognizer(setLongPress())

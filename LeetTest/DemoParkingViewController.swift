@@ -20,6 +20,8 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
     var adScrollView = UIScrollView()
     var adPageCtrl = UIPageControl()
 
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,6 +59,14 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
         repeatView.addSubview(adPageCtrl)
 
         //Timer.every(3, adScrollViewRotation)
+
+        repeateTimer()
+
+
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,14 +74,21 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
         // Dispose of any resources that can be recreated.
     }
 
-    func adScrollViewRotation(){
-        DLog(message: adScrollView.contentOffset.x)
+    func repeateTimer(){
+
+        let myTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(adScrollViewRotation), userInfo: "time1", repeats: true)
+        if let userinfo = myTimer.userInfo as? String{
+            print(userinfo)
+        }
+    }
+
+    @objc func adScrollViewRotation(){
         adScrollView.contentOffset.x += adScrollView.contentOffset.x < adScrollView.frame.width*5 ? adScrollView.frame.width : -adScrollView.contentOffset.x
-        DLog(message: adScrollView.contentOffset.x)
     }
 
     //MARK: - Button Click
     @IBAction func firstBtnClick(_ sender: UIButton) {
+        let alert = UIAlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertControllerStyle#>)
     }
     @IBAction func secondBtnClick(_ sender: UIButton) {
     }
@@ -83,7 +100,6 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
 
     //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        DLog(message: "did scroll = \(scrollView.contentOffset.x)")
         let currPage = Int(scrollView.contentOffset.x / (scrollView.frame.width))
         adPageCtrl.currentPage = currPage
     }
