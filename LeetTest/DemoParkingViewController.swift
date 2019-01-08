@@ -21,6 +21,7 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
     var adPageCtrl = UIPageControl()
 
 
+    var aa = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
 
             adScrollView.addSubview(repeatImageView)
         }
+
         adPageCtrl.numberOfPages = 6
         adPageCtrl.currentPage = 0
         adPageCtrl.isEnabled = false
@@ -54,19 +56,23 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
 
         adPageCtrl.frame = CGRect(x: 0, y: repeatView.bounds.height - 40, width: repeatView.bounds.width, height: 40)
 
-
         repeatView.addSubview(adScrollView)
         repeatView.addSubview(adPageCtrl)
 
-        //Timer.every(3, adScrollViewRotation)
-
-        repeateTimer()
-
-
+        if #available(iOS 10.0, *) {
+            aa = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (_) in
+                self.adScrollViewRotation()
+            })
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-
+        if aa.isValid{
+            aa.invalidate()
+        }else{
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,27 +80,37 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
         // Dispose of any resources that can be recreated.
     }
 
-    func repeateTimer(){
-
-        let myTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(adScrollViewRotation), userInfo: "time1", repeats: true)
-        if let userinfo = myTimer.userInfo as? String{
-            print(userinfo)
-        }
-    }
-
-    @objc func adScrollViewRotation(){
+    func adScrollViewRotation(){
         adScrollView.contentOffset.x += adScrollView.contentOffset.x < adScrollView.frame.width*5 ? adScrollView.frame.width : -adScrollView.contentOffset.x
     }
 
     //MARK: - Button Click
     @IBAction func firstBtnClick(_ sender: UIButton) {
-        let alert = UIAlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertControllerStyle#>)
+        let alert = UIAlertController(title: "停車", message: "暫無設定", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
+
     @IBAction func secondBtnClick(_ sender: UIButton) {
+        let alert = UIAlertController(title: "休息", message: "暫無設定", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
+
     @IBAction func thirdBtnClick(_ sender: UIButton) {
+        let alert = UIAlertController(title: "娛樂", message: "暫無設定", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
+
     @IBAction func fouthBtnClick(_ sender: UIButton) {
+        let alert = UIAlertController(title: "設定", message: "暫無設定", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 
 
@@ -121,6 +137,13 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "你點擊了", message: "第 \(indexPath.row+1) 張", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+
     //MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize:CGSize = CGSize(width: collectionView.frame.width/2-10, height: collectionView.frame.width/2)
@@ -142,5 +165,8 @@ class DemoParkingViewController: UIViewController,UICollectionViewDelegate,UICol
         return insets
     }
 
-
+    
 }
+
+
+
