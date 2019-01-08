@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F096B3921E4792B0079AC52 /* BKLeetCode1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F096B3821E4792B0079AC52 /* BKLeetCode1.swift */; };
 		0F0BE03021DF66FC001D57A8 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0BE02F21DF66FC001D57A8 /* MenuTableViewController.swift */; };
 		0F18E15821CA33BD001D5C44 /* CollectGestureTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E15721CA33BD001D5C44 /* CollectGestureTestViewController.swift */; };
 		0F18E15A21CA3A4B001D5C44 /* GestureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E15921CA3A4B001D5C44 /* GestureCollectionViewCell.swift */; };
@@ -74,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F096B3621E447950079AC52 /* MyPG.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPG.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0F096B3821E4792B0079AC52 /* BKLeetCode1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKLeetCode1.swift; sourceTree = "<group>"; };
 		0F0BE02F21DF66FC001D57A8 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0F18E15721CA33BD001D5C44 /* CollectGestureTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectGestureTestViewController.swift; sourceTree = "<group>"; };
 		0F18E15921CA3A4B001D5C44 /* GestureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F096B3721E478FB0079AC52 /* backwardsLeetCode */ = {
+			isa = PBXGroup;
+			children = (
+				0F096B3821E4792B0079AC52 /* BKLeetCode1.swift */,
+			);
+			path = backwardsLeetCode;
+			sourceTree = "<group>";
+		};
 		0F4BD91820DA30C6000428A0 /* img */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +226,7 @@
 		0F4FF3482099B8AC00B4D3DE /* LeetTest */ = {
 			isa = PBXGroup;
 			children = (
+				0F096B3721E478FB0079AC52 /* backwardsLeetCode */,
 				0F4F781A20F360C800928814 /* tempImg */,
 				0F4BD91820DA30C6000428A0 /* img */,
 				0F4788D820B405D100BC8D70 /* Graphics.swift */,
@@ -239,6 +251,7 @@
 				0F18E15721CA33BD001D5C44 /* CollectGestureTestViewController.swift */,
 				0F18E15921CA3A4B001D5C44 /* GestureCollectionViewCell.swift */,
 				0F0BE02F21DF66FC001D57A8 /* MenuTableViewController.swift */,
+				0F096B3621E447950079AC52 /* MyPG.playground */,
 			);
 			path = LeetTest;
 			sourceTree = "<group>";
@@ -421,6 +434,7 @@
 			files = (
 				0F3D616F20CFC67900EC2DDF /* SecondViewController.swift in Sources */,
 				0F1DC43F21A24DCD009D3CB5 /* TestLagViewViewController.swift in Sources */,
+				0F096B3921E4792B0079AC52 /* BKLeetCode1.swift in Sources */,
 				0F4F781920F3607B00928814 /* DemoParkingTableViewCell.swift in Sources */,
 				0F4F781720F3605500928814 /* DemoParkingViewController.swift in Sources */,
 				0F4BD91C20DA367E000428A0 /* MyCollectionViewCell.swift in Sources */,
