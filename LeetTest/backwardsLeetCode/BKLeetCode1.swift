@@ -446,3 +446,84 @@ class leet13{
         return s.characters.map{Int(String($0)) ?? 0}.reduce(0, +)
     }
 }
+
+class leet14{
+    func thirt(_ n: Int) -> Int {
+        var arr = [1, 10, 9, 12, 3, 4]
+        let intArr = String(n).characters.flatMap{Int(String($0))}.reversed()
+        var sum = 0
+        for (i,v) in intArr.enumerated(){
+            sum += v * arr[i % 6]
+        }
+        return sum == n ? sum : thirt(sum)
+    }
+}
+
+class leet15{
+
+    // 拿起一個數，插入任意位置，取最小
+    func smallest(_ n: Int) -> (Int, Int, Int) {
+        var v = 0
+        var s = 0
+        var e = 0
+        var strArr = String(n).characters.flatMap{String($0)}.map{String($0)}
+        v = n
+
+        for i in 0..<strArr.count{
+            for j in 0..<strArr.count{
+                var newArr = strArr
+                let insertNum = newArr[i]
+                newArr.remove(at: i)
+                newArr.insert(insertNum, at: j)
+
+                let newNum = Int(newArr.joined())!
+                if newNum < v {
+                    v = newNum
+                    s = i
+                    e = j
+                }
+            }
+        }
+        return (v,s,e)
+    }
+}
+
+class leet16{
+
+    // 陣列選人物
+    func streetFighterSelection(fighters: [[String]], position: (row: Int, column: Int), moves: [Direction]) -> [String] {
+        var res = Array<String>()
+        var r = position.row
+        var c = position.column
+
+        for step in moves{
+            switch step {
+            case .up:
+                r = r == 0 ? r : r - 1
+                res.append(fighters[r][c])
+            case .down:
+                r = r == 1 ? r : r + 1
+                res.append(fighters[r][c])
+            case .left:
+                c = c == 0 ? 5 : (c - 1) % 6
+                res.append(fighters[r][c])
+            case .right:
+                c = (c + 1) % 6
+                res.append(fighters[r][c])
+            }
+        }
+        return res
+    }
+
+    enum Direction:Int{
+        case up
+        case down
+        case left
+        case right
+    }
+
+    let fighters2 = [
+        ["Ryu", "E.Honda",  "Blanka",   "Guile", "Balrog", "Vega"],
+        ["Ken", "Chun Li", "Zangief", "Dhalsim",  "Sagat", "M.Bison"]
+    ]
+}
