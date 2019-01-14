@@ -527,3 +527,231 @@ class leet16{
         ["Ken", "Chun Li", "Zangief", "Dhalsim",  "Sagat", "M.Bison"]
     ]
 }
+
+class leet17 {
+    //Sum by Factors
+    func sumOfDivided(_ l: [Int]) -> [(Int, Int)] {
+        var res = Array<(Int,Int)>()
+        let count = l.count
+        let absArr = l.map{abs($0)}
+        var facArr:Array<Array<Int>> = Array(repeating: [], count: count)
+        for x in 0..<count{
+            if isPrime(num: absArr[x]){
+                facArr[x].append(absArr[x])
+            }else{
+                var d = 2
+                while d*d <= absArr[x] {
+                    if absArr[x] % d == 0{
+                        let quo = absArr[x] / d
+                        if isPrime(num: d) {
+                            facArr[x].append(d)
+                        }
+                        if d != quo && isPrime(num: quo){
+                            facArr[x].append(quo)
+                        }
+                    }
+                    d += 1
+                }
+            }
+        }
+        let orderArr = Array(Set(facArr.flatMap{$0})).sorted()
+
+        for key in orderArr{
+            var sum = 0
+            for i in 0..<facArr.count{
+                if facArr[i].contains(key){
+                    sum += l[i]
+                }
+            }
+            res.append((key,sum))
+        }
+        print(res)
+        return res
+    }
+
+    private func isPrime(num:Int) -> Bool{
+        if num == 2 {return true}
+        if num == 3 {return true}
+        var n = 2
+        while n*n <= num {
+            if num % n == 0{
+                return false
+            }
+            n += 1
+        }
+        return true
+    }
+}
+
+class leet18 {
+
+    // find prime gap
+    func gap(_ g: Int, _ m: Int, _ n: Int) -> (Int, Int)? {
+
+        guard n > m else {
+            return nil
+        }
+
+        var firstPrime:Int? = nil
+        for nextPrime in m...n{
+            if isPrime(num: nextPrime){
+                if firstPrime == nil{
+                    firstPrime = nextPrime
+                }else{
+                    if nextPrime - firstPrime! == g{
+                        return (firstPrime!,nextPrime)
+                    }else{
+                        firstPrime = nextPrime
+                    }
+                }
+            }
+        }
+
+        return nil
+    }
+
+    private func isPrime(num:Int) -> Bool{
+        if num == 2 {return true}
+        if num == 3 {return true}
+        var n = 2
+        while n*n <= num {
+            if num % n == 0{
+                return false
+            }
+            n += 1
+        }
+        return true
+    }
+}
+
+class leet19{
+    //Pn取m Pn取k (考慮順序，不重覆，排列)
+    func permutations(arr:Array<Int>,taken:Int) -> Array<Array<Int>>{
+        guard taken <= arr.count else {
+            return [[]]
+        }
+
+        var resArr = Array<Array<Int>>()
+
+        for ele in arr{
+            resArr.append([ele])
+        }
+
+        //包括低階陣列
+        var totalArr = Array<Array<Int>>()
+        totalArr += resArr
+
+        for _ in 1..<taken{
+            //避免低階陣列重復使用
+            var newArr = Array<Array<Int>>()
+            for (i,v) in resArr.enumerated(){
+                for ele in arr{
+                    if !resArr[i].contains(ele){
+                        newArr.append(v + [ele])
+                    }
+                }
+            }
+            totalArr += newArr
+            resArr = newArr
+        }
+
+        return resArr
+    }
+
+    //Pn取m Pn取k (考慮順序，不重覆，排列)
+    func p<T:Equatable>(arr:Array<T>,taken:Int) -> Array<Array<T>>{
+        guard taken <= arr.count else {
+            return [[]]
+        }
+
+        var resArr = Array<Array<T>>()
+
+        for ele in arr{
+            resArr.append([ele])
+        }
+
+        //包括低階陣列
+        var totalArr = Array<Array<T>>()
+        totalArr += resArr
+
+        for _ in 1..<taken{
+            //避免低階陣列重復使用
+            var newArr = Array<Array<T>>()
+            for (i,v) in resArr.enumerated(){
+                for ele in arr{
+                    if !resArr[i].contains(ele){
+                        newArr.append(v + [ele])
+                    }
+                }
+            }
+            totalArr += newArr
+            resArr = newArr
+        }
+
+        return resArr
+    }
+}
+
+class leet20{
+    func gta(limit: Int, args:[Int]) -> Int {
+        var sum = 0
+
+        let taken = limit
+        let arr = takeNewNum(ar: args, num: limit)
+
+        guard taken <= arr.count else {
+            return 0
+        }
+
+        var resArr = Array<Array<Int>>()
+
+        for ele in arr{
+            resArr.append([ele])
+            sum += ele
+        }
+
+
+        for _ in 1..<taken{
+            var newArr = Array<Array<Int>>()
+            for (i,v) in resArr.enumerated(){
+                for ele in arr{
+                    if !resArr[i].contains(ele){
+                        newArr.append(v + [ele])
+                        sum += v.reduce(0, +)
+                        sum += ele
+                    }
+                }
+            }
+            resArr = newArr
+        }
+
+
+        return sum
+    }
+
+    func takeNewNum(ar:[Int],num:Int) ->[Int]{
+        var res = [Int]()
+
+        let strArr = ar.map{String($0)}
+        var strArr2D = Array<Array<String>>()
+        for str in strArr{
+            let ele = str.characters.flatMap{$0}.map{String($0)}
+            strArr2D.append(ele)
+        }
+        var myindex = 0
+
+        while res.count < num{
+            let takeIndex = myindex % strArr2D.count
+            if strArr2D[takeIndex].count > 0{
+                let addNum = Int(strArr2D[takeIndex][0])!
+                if !res.contains(addNum){
+                    res.append(addNum)
+                }
+                strArr2D[takeIndex].removeFirst()
+            }
+            myindex += 1
+        }
+
+        return res
+    }
+}
