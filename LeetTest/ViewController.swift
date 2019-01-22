@@ -139,8 +139,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPageViewControllerD
         return true
     }
 
-
-
     func factor(num1:Int, num2:Int) -> Int{
         guard num1 > 0 else {return num2}
         guard num2 > 0 else {return num1}
