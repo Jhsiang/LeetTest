@@ -3,30 +3,65 @@ import UIKit
 var str = "Hello, playground"
 print("str = ",str)
 
-import Foundation
+class Node {
+    var data: Int
+    var next: Node?
+    init(_ data: Int) {
+        self.data = data
+    }
+}
 
-func tour(_ friends: [String], _ friendsTowns: [String:String], _ dist: [String:Double]) -> Int {
-    var res:Double = 0
-    var nowLoc:Double = 0
-    for i in friends{
-        if let town = friendsTowns[i]{
-            if let dis = dist[town]{
-                res += calS(a: nowLoc, c: dis)
-                nowLoc = dis
-            }
+func mergeSort(_ list:Node?) -> Node? {
+    guard var list = list else {return nil}
+    var arr = [Int]()
+    while list.next != nil {
+        arr.append(list.data)
+        list = list.next!
+    }
+
+    arr.sort(by: <)
+    var res = Node(arr[0])
+    for (i,v) in arr.enumerated(){
+
+        if i != 0 {
+            let newNode = Node(v)
+            newNode.next = res
+            res = newNode
         }
     }
-    res += nowLoc
-    
-    return Int(res)
+    return res
 }
 
+var aa = Node(1)
+aa.next = Node(3)
 
-func calS(a:Double,c:Double) -> Double{
-    return pow(pow(Double(c), 2) - pow(Double(a), 2), 0.5)
+print(aa.next?.data)
+
+func merge(left:[Int],right:[Int]) -> [Int] {
+    var mergedList = [Int]()
+    var left = left
+    var right = right
+
+    while left.count > 0 && right.count > 0 {
+        if left.first! < right.first! {
+            mergedList.append(left.removeFirst())
+        } else {
+            mergedList.append(right.removeFirst())
+        }
+    }
+
+    return mergedList + left + right
 }
 
-let aa = ["A1", "A2", "A3", "A4", "A5"]
-let bb = ["A4": "X4", "A3": "X3", "A1": "X1", "A2": "X2"]
-let cc = ["X3": 250.0, "X1": 100.0, "X2": 200.0, "X4": 300.0]
-print(tour(aa, bb, cc))
+func mergeSort2(_ list:[Int]) -> [Int] {
+    guard list.count > 1 else {
+        return list
+    }
+
+    let leftList = Array(list[0..<list.count/2])
+    let rightList = Array(list[list.count/2..<list.count])
+
+    return merge(left: mergeSort2(leftList), right: mergeSort2(rightList))
+}
+
+mergeSort2([6,4,8,2,9,0,26,2])

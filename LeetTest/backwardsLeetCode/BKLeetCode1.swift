@@ -1,6 +1,6 @@
 //
-//  BKLeetCode1.swift
-//  LeetTest
+//  BKleetCode1.swift
+//  leetTest
 //
 //  Created by Jim Chuang on 2019/1/8.
 //  Copyright © 2019 jj. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class leet1 {
+class codewars1 {
 
     // 質數，倒數亦是且不可與倒數相同
     func backwardsPrime(_ start: Int, _ stop: Int) -> [Int] {
@@ -54,7 +54,7 @@ class leet1 {
     }
 }
 
-class leet2{
+class codewars2{
 
     //加權計算
     func evaluate(good: String, vsEvil evil: String) -> String {
@@ -124,7 +124,7 @@ class leet2{
     }
 }
 
-class leet3 {
+class codewars3 {
     /*
      addOne = add(1)
      addOne(3) // 4
@@ -138,7 +138,7 @@ class leet3 {
     }
 }
 
-class leet4 {
+class codewars4 {
 
     //分解重新排列
     func stockList(_ listOfArt: [String], _ listOfCat: [String]) -> String {
@@ -185,7 +185,7 @@ class leet4 {
     }
 }
 
-class leet5 {
+class codewars5 {
     //"abcd" -> "A-Bb-Ccc-Dddd"
     func accum(_ s: String) -> String {
         var res = ""
@@ -206,7 +206,7 @@ class leet5 {
     }
 }
 
-class leet6{
+class codewars6{
     // 移除與5相關的數字
     func dontGiveMeFive(_ start: Int, _ end: Int) -> Int {
         var arr = Array<Int>()
@@ -220,7 +220,7 @@ class leet6{
     }
 }
 
-class leet7{
+class codewars7{
 
     //輸出 a2中 含有a1 的字串且不重覆
     func inArray(_ a1: [String], _ a2: [String]) -> [String] {
@@ -238,7 +238,7 @@ class leet7{
     }
 }
 
-class leet8{
+class codewars8{
 
     //抓最小的兩個
     func sumOfTwoSmallestIntegersIn(_ array: [Int]) -> Int {
@@ -248,7 +248,7 @@ class leet8{
     }
 }
 
-class leet9 {
+class codewars9 {
 
     //分解相乘
     func persistence(for num: Int) -> Int {
@@ -292,7 +292,7 @@ class leet9 {
     }
 }
 
-class leet10 {
+class codewars10 {
 
     //龜兔賽跑 算時間
     func race(v1: Int, v2: Int, g: Int) -> [Int]? {
@@ -330,7 +330,7 @@ class leet10 {
     }
 }
 
-class leet11{
+class codewars11{
 
     //找到消失的數字
     func findDeletedNumber(_ array: [Int], _ mixArray: [Int]) -> Int {
@@ -350,7 +350,7 @@ class leet11{
     }
 }
 
-class leet12{
+class codewars12{
 
     //rgb 轉16進制
     func rgb(_ r: Int, _ g: Int, _ b: Int) -> String {
@@ -392,7 +392,7 @@ class leet12{
 
 }
 
-class leet13{
+class codewars13{
 
     //字串轉數字，相加一次後比大小，如果相同則比字串
     func orderWeight(_ s: String) -> String {
@@ -447,7 +447,7 @@ class leet13{
     }
 }
 
-class leet14{
+class codewars14{
     func thirt(_ n: Int) -> Int {
         var arr = [1, 10, 9, 12, 3, 4]
         let intArr = String(n).characters.flatMap{Int(String($0))}.reversed()
@@ -459,7 +459,7 @@ class leet14{
     }
 }
 
-class leet15{
+class codewars15{
 
     // 拿起一個數，插入任意位置，取最小
     func smallest(_ n: Int) -> (Int, Int, Int) {
@@ -488,7 +488,7 @@ class leet15{
     }
 }
 
-class leet16{
+class codewars16{
 
     // 陣列選人物
     func streetFighterSelection(fighters: [[String]], position: (row: Int, column: Int), moves: [Direction]) -> [String] {
@@ -528,7 +528,7 @@ class leet16{
     ]
 }
 
-class leet17 {
+class codewars17 {
     //Sum by Factors
     func sumOfDivided(_ l: [Int]) -> [(Int, Int)] {
         var res = Array<(Int,Int)>()
@@ -583,7 +583,7 @@ class leet17 {
     }
 }
 
-class leet18 {
+class codewars18 {
 
     // find prime gap
     func gap(_ g: Int, _ m: Int, _ n: Int) -> (Int, Int)? {
@@ -624,7 +624,7 @@ class leet18 {
     }
 }
 
-class leet19{
+class codewars19{
     //Pn取m Pn取k (考慮順序，不重覆，排列)
     func permutations(arr:Array<Int>,taken:Int) -> Array<Array<Int>>{
         guard taken <= arr.count else {
@@ -693,7 +693,7 @@ class leet19{
     }
 }
 
-class leet20{
+class codewars20{
 
     // 各種組合加總
     func gta(limit: Int, args:[Int]) -> Int {
@@ -760,7 +760,7 @@ class leet20{
     }
 }
 
-class leet21{
+class codewars21{
     //ΣnX^n = m, know m find x, x in 0..<1
     func solve(_ m: Double) -> Double {
         var res:Double = 0
@@ -794,7 +794,7 @@ class leet21{
     }
 }
 
-class leet22{
+class codewars22{
     //未完成 tip:歐拉函數
     //Last digit of a huge number
     func lastDigit<S>(_ numbers: S) -> Int where S: Sequence, S.Iterator.Element == Int {
@@ -901,7 +901,7 @@ class leet22{
     }
 }
 
-class leet23{
+class codewars23{
 
     // 矩陣相乘
     func matrixMultiplication(_ a:[[Int]], _ b:[[Int]]) -> [[Int]] {
@@ -924,7 +924,7 @@ class leet23{
     }
 }
 
-class leet24{
+class codewars24{
     // 分數分解
     func decompose(_ nrStr: String, _ drStr: String) -> String {
         guard var son = Int(nrStr) else {return ""}
@@ -1005,7 +1005,7 @@ class leet24{
     }
 }
 
-class leet25{
+class codewars25{
     //Is my friend cheating?
     //1...n的和 減掉a,b = a*b, where a,b in 1...n
     func removNb(_ n: Int) -> [(Int,Int)] {
@@ -1031,7 +1031,7 @@ class leet25{
     }
 }
 
-class leet26{
+class codewars26{
     //色碼電阻 解碼
     //Resistor Color Codes, Part 2
     func encodeResistorColors(_ ohmsString: String) -> String {
@@ -1086,7 +1086,7 @@ class leet26{
     }
 }
 
-// Leet27
+// codewars27
 // base64 encode/decode
 extension String {
     public var toBase64: String {
@@ -1109,7 +1109,7 @@ extension String {
     }
 }
 
-class leet28{
+class codewars28{
     //反方向判斷
     func dirReduc(_ arr: [String]) -> [String] {
         let arrInt = arr.map { (str) -> Int in
@@ -1155,7 +1155,7 @@ class leet28{
     }
 }
 
-class leet29{
+class codewars29{
 
     //計算因數的數量
     func countKprimes(_ k: Int, _ start: Int, _ nd: Int) -> [Int] {
@@ -1221,7 +1221,7 @@ class leet29{
     }
 }
 
-class leet30{
+class codewars30{
 
     //RGB 16進制轉10進制
     func hexStringToRGB(_ str:String) -> RGB {
@@ -1275,7 +1275,7 @@ class leet30{
     }
 }
 
-class leet31{
+class codewars31{
 
     //化為同分母
     func convertFracts(_ l: [(Int, Int)]) -> [(Int, Int)] {
@@ -1335,7 +1335,7 @@ class leet31{
     }
 }
 
-class leet32{
+class codewars32{
 
     // 計算距離(各點為直角)
     func tour(_ friends: [String], _ friendsTowns: [String:String], _ dist: [String:Double]) -> Int {
@@ -1356,5 +1356,191 @@ class leet32{
 
     func calS(a:Double,c:Double) -> Double{
         return pow(pow(Double(c), 2) - pow(Double(a), 2), 0.5)
+    }
+}
+
+class codewars33{
+
+    // 字串陣列分割合併
+    func strToArr(str:String) -> [String]{
+        let myStr = "Hello, playground"
+        let myArr = myStr.components(separatedBy: ", ") // ["Hello", "playground"]
+        return myArr
+    }
+
+    func arrToStr(arr:[String]) -> String{
+        let myArr = ["Hello", "playground"]
+        let myStr = myArr.joined(separator: ", ") // "Hello, playground"
+        return myStr
+    }
+
+}
+
+class codewars34{
+    //字串搜尋
+    func wordSearch(_ str:String, _ arr:[String]) -> [String] {
+        let res = arr.filter{$0.uppercased().contains(str.uppercased())}
+        return res.count > 0 ? res : ["Empty"]
+    }
+}
+
+class codewars35{
+
+    // 費氏數列
+    func productFib(_ prod : UInt64) -> (UInt64,UInt64,Bool) {
+        var arr:[UInt64] = [0,1]
+        var n = 2
+
+        while true {
+            arr.append(arr[n-1]+arr[n-2])
+            if arr[n-1] * arr[n] > prod{
+                break
+            }
+            n += 1
+        }
+        return (arr[n-1],arr[n],arr[n-1] * arr[n] == prod)
+    }
+
+    func productFib2(_ prod: UInt64) -> (UInt64, UInt64, Bool) {
+        var m: UInt64 = 0, n: UInt64 = 1
+        while m * n < prod { (m, n) = (n, m + n) }
+        return (m, n, m * n == prod)
+    }
+}
+
+class codewars36{
+
+    // 移動字元次數 判斷相等
+    func shiftedDiff(_ s1: String, _ s2: String) -> Int? {
+        var s1 = s1
+        var s2 = s2
+
+        guard s1.characters.count == s2.characters.count else { return nil }
+
+        for count in 0..<s1.characters.count {
+            if s1 == s2{
+                return count
+            }
+
+            if let last = s1.characters.last{
+                s1.characters.removeLast()
+                s1.characters.insert(last, at: s1.startIndex)
+            }
+        }
+        return nil
+    }
+}
+
+class codewars37{
+
+    // (1! + 2! .... + n!) / n!
+    func going(_ n: Int) -> Double {
+        var res:Double = 0
+        var sum:Double = 1
+        for i in (1...n).reversed(){
+            res += 1 / sum
+            sum *= Double(i)
+        }
+
+        res = Double(Int(res * 1e6)) / 1e6
+        return res
+    }
+}
+
+class codewars38{
+    // 數字反轉
+    func descendingOrder(of number: Int) -> Int {
+        return Int(Array(String(number).characters).map{String($0)}.sorted(by: >).joined(separator: ""))!
+    }
+}
+
+class codewars39{
+
+    enum Operator {
+        case ADD
+        case SUBTRACT
+        case MULTIPLY
+    }
+
+    // 二進制加、減、乘
+    func calculate(_ a:String, _ b:String, _ op:Operator) -> String {
+        var num1 = 0
+        var num2 = 0
+        var sum = 0
+        var res = ""
+
+        for c in a{
+            num1 = num1*2 + Int(String(c))!
+        }
+        for c in b{
+            num2 = num2*2 + Int(String(c))!
+        }
+        switch op {
+        case .ADD:
+            sum = num1 + num2
+        case .SUBTRACT:
+            sum = num1 - num2
+        case .MULTIPLY:
+            sum = num1 * num2
+        }
+
+        if sum >= 0{
+            while sum > 0{
+                res = String(sum % 2) + res
+                sum /= 2
+            }
+        }else{
+            while sum < 0 {
+                res = String(abs(sum % 2)) + res
+                sum /= 2
+            }
+            res += "-"
+        }
+        return res
+    }
+}
+
+class codewars40{
+    
+    func digPow(for number: Int, using power: Int) -> Int {
+        var arr = Array(String(number).characters).map{String($0)}.map{Int($0)!}
+        var power = power
+        var sum = 0
+        for i in arr{
+            sum += Int(pow(Double(i), Double(power)))
+            power += 1
+        }
+
+        return sum % number == 0 ? sum / number : -1
+    }
+}
+
+class codewars41 {
+    // 合併排序法，merge sort
+    func merge(left:[Int],right:[Int]) -> [Int] {
+        var mergedList = [Int]()
+        var left = left
+        var right = right
+
+        while left.count > 0 && right.count > 0 {
+            if left.first! < right.first! {
+                mergedList.append(left.removeFirst())
+            } else {
+                mergedList.append(right.removeFirst())
+            }
+        }
+
+        return mergedList + left + right
+    }
+
+    func mergeSort2(_ list:[Int]) -> [Int] {
+        guard list.count > 1 else {
+            return list
+        }
+
+        let leftList = Array(list[0..<list.count/2])
+        let rightList = Array(list[list.count/2..<list.count])
+
+        return merge(left: mergeSort2(leftList), right: mergeSort2(rightList))
     }
 }
