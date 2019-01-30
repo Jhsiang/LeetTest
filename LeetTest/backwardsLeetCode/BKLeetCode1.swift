@@ -1544,3 +1544,89 @@ class codewars41 {
         return merge(left: mergeSort2(leftList), right: mergeSort2(rightList))
     }
 }
+
+class codewars42 {
+
+    // 名字加權排序
+    func rank(_ st: String, _ we: [Int], _ n: Int) -> String {
+        let errorMsg = "Not enough participants"
+        var strArr = st.components(separatedBy: ",")
+
+        guard st.characters.count > 0 else { return "No participants" }
+        guard n <= we.count && strArr.count == we.count && n > 0 else { return errorMsg }
+
+        var nDic = [String:Int]()
+        for i in 0..<we.count{
+            nDic[strArr[i]] = we[i]
+        }
+
+        for i in 0..<strArr.count - 1{
+            for j in 0..<strArr.count - 1 - i{
+                if cal(str: strArr[j], n: nDic[strArr[j]]!) == cal(str: strArr[j+1], n: nDic[strArr[j+1]]!) &&
+                    strArr[j] > strArr[j+1]{
+                    (strArr[j],strArr[j+1]) = (strArr[j+1],strArr[j])
+                }else if cal(str: strArr[j], n: nDic[strArr[j]]!) < cal(str: strArr[j+1], n: nDic[strArr[j+1]]!){
+                    (strArr[j],strArr[j+1]) = (strArr[j+1],strArr[j])
+                }
+            }
+        }
+
+        return strArr[n-1]
+    }
+
+    private func cal(str:String, n:Int) -> Int{
+        var str = str
+        str = str.uppercased()
+        var arr = Array(str.characters).map{String($0)}
+        var arr2 = arr.map{$0.unicodeScalars.first!.value-64}
+        return (arr2.count + Int(arr2.reduce(0, +))) * n
+    }
+
+    func rank2(_ st: String, _ we: [Int], _ n: Int) -> String {
+        guard !st.isEmpty else { return "No participants" }
+        let components = st.components(separatedBy: ",")
+        guard n <= components.count else { return "Not enough participants" }
+
+        let result = components.enumerated().map { index, firstname -> (Int, String) in
+            let sum = firstname.uppercased().utf8.map {Int($0) - Int("A".utf8.first!) + 1}.reduce(firstname.characters.count, +)
+            return (sum * we[index], firstname)
+        }
+
+        let sortedResult = result.sorted { $0.0 == $1.0 ? $0.1 < $1.1 : $0.0 > $1.0 }
+
+        return sortedResult[n - 1].1
+    }
+}
+
+class codewars43{
+    func findOutlier(_ array: [Int]) -> Int {
+        var oldArr = array.filter{$0 % 2 != 0}
+        var evenArr = array.filter{$0 % 2 == 0}
+
+        guard array.count >= 3 else {
+            return 0
+        }
+
+        return oldArr.count == 1 ? oldArr[0] : evenArr[0]
+    }
+}
+
+class codewars44{
+
+    //由右至左 找Int 的 index
+    func findDigit(_ num:Int, _ nth: Int) -> Int {
+        guard nth > 0 else { return -1 }
+        guard nth < String(num).count else { return 0 }
+        return Array(String(abs(num))).map{String($0)}.map{Int($0)!}.reversed()[nth - 1]
+    }
+
+    func findDigit2(_ num: Int, _ nth: Int) -> Int {
+        let positive = abs(num)
+
+        guard nth > 0 else { return -1 }
+        guard positive > 0 else { return 0 }
+        guard nth > 1 else { return positive % 10 }
+
+        return findDigit2(positive / 10, nth - 1)
+    }
+}
