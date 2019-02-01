@@ -1630,3 +1630,57 @@ class codewars44{
         return findDigit2(positive / 10, nth - 1)
     }
 }
+
+class codewars45{
+
+    //刪母音
+    func disemvowel(_ s: String) -> String {
+        let vowel:[Character] = ["a","e","i","o","u","A","E","I","O","U"]
+        return s.filter{ !vowel.contains($0)}
+    }
+}
+
+class codewars46{
+    
+    func arrange(_ s: String) -> String {
+        var res = ""
+        var arr = s.components(separatedBy: " ")
+        guard arr.count > 1 else {
+            return ""
+        }
+        for i in 0..<arr.count - 1{
+            switch i % 2 {
+            case 0:
+                if arr[i].characters.count > arr[i+1].characters.count{
+                    (arr[i],arr[i+1]) = (arr[i+1],arr[i])
+                }
+                arr[i] = arr[i].lowercased()
+                arr[i+1] = arr[i+1].uppercased()
+            case 1:
+                if arr[i].characters.count < arr[i+1].characters.count{
+                    (arr[i],arr[i+1]) = (arr[i+1],arr[i])
+                }
+                arr[i] = arr[i].uppercased()
+                arr[i+1] = arr[i+1].lowercased()
+            default:
+                break
+            }
+        }
+        res = arr.joined(separator: " ")
+        return res
+    }
+}
+
+class codewars47{
+    func sortTwisted37(_ arr: [Int]) -> [Int] {
+        func replace3with7(_ arr: [Int]) -> [Int]  {
+            return arr.map {
+                let string = "\($0)"
+                return Int(String(string.characters.map {
+                    $0 == "3" ? "7" : $0 == "7" ? "3" : $0
+                }))!
+            }
+        }
+        return replace3with7(replace3with7(arr).sorted())
+    }
+}
