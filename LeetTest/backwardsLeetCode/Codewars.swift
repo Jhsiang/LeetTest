@@ -1684,3 +1684,51 @@ class codewars47{
         return replace3with7(replace3with7(arr).sorted())
     }
 }
+
+class codewars48{
+    func sol(_ num:Int) -> Int{
+        return (0..<num).filter { $0 % 3 == 0 || $0 % 5 == 0 }.reduce(0, +)
+    }
+}
+
+class codewars49{
+    //陣列 弄成1維 或2維
+    func flattenTwoLevels(_ arr:[Any]) -> [Any] {
+        var res = [Any]()
+
+        for x in arr{
+            if x is Int || x is [Int]{
+                res.append(x)
+            }else {
+                var y = x
+                while let anyArr = y as? [Any]{
+                    if y is [Int]{
+                        break
+                    }
+                    var z = [Any]()
+                    for k in anyArr{
+                        if let myArr2 = k as? [Any]{
+                            z = z + myArr2
+                        }else{
+                            z.append(k)
+                        }
+                    }
+                    y = z
+                }
+                res.append(y)
+            }
+        }
+        return res
+    }
+
+    // 1維
+    func flatten(_ x: Any) -> [Any]? {
+        return (x as? [Any])?.flatMap { flatten($0) ?? [$0] }
+    }
+
+    // 2維
+    func flattenTwoLevels2(_ array: [Any]) -> [Any] {
+        return array.map { flatten($0) ?? $0 }
+    }
+
+}
